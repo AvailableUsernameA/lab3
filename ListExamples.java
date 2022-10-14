@@ -1,7 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.text.html.HTMLDocument.RunElement;
+
 interface StringChecker { boolean checkString(String s); }
+
+class longStringChecker implements StringChecker {
+  public boolean checkString(String s) {
+    if (s.length() < 5) {return false;}
+    return true;
+  }
+}
 
 class ListExamples {
 
@@ -12,7 +21,8 @@ class ListExamples {
     List<String> result = new ArrayList<>();
     for(String s: list) {
       if(sc.checkString(s)) {
-        result.add(0, s);
+        //result.add(0, s);
+        result.add(s);
       }
     }
     return result;
@@ -40,7 +50,8 @@ class ListExamples {
     }
     while(index2 < list2.size()) {
       result.add(list2.get(index2));
-      index1 += 1;
+      //index1 += 1;
+      index2 += 1;
     }
     return result;
   }
