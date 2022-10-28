@@ -3,13 +3,14 @@
 ## Simplest Searching Engine
 ![image](part1Code.png)
 ![image](noArgument.png)
-Since the there is no argument and so the length of the argument is 0, it will return "Missing port number! Try any number between 1024 to 49151".
+Since the there is no argument and so the length of the argument is 0, it will return "Missing port number! Try any number between 1024 to 49151" when it runs the main method and meets the first if statement.
 ![image](situation1.png)
-For all the pictures, handleRequest of HandleStr is called. For this one, the path is "/", so the first if applies here and prints out "String:" and "".
+For all the pictures, handleRequest of HandleStr is called.\
+For this one, the first element of args is 28494 and thus, the value of port is 28494. Then port and a new created HandlerStr object are passes to the start() method of Server as arguments. In start(), server is created by a built-in method in java and port is used for creating an InetSocketAddress to create server. Then, server.createContext("/", new ServerHttpHandler(handler)); is called. handler is the new created HandleStr object passing to start(). handleRequest is also called somewhere in the program (I think it is ServerHttpHandler.handle, but I don't know where ServerHttpHandler.handle is called. perhaps in some built-in method). Since the path is "/", so the first if applies here and returns "String:" and "".
 ![image](situation2.png)
-For this one, it has "/add" in its path and its query starts with s. It fits the second if and so prints the thing shown.
+For this one, the methods called are the same, but the path in the browser is changed to "/add" followed by a query "?=hello". Since now it doesn't fit the first it, it goes to else and finds that it fits the first if in the else and the if inside the if because it has "/add" in its path and its query starts with s. Therefore, returns the thing shown. We can see the words in the browser change after pressing enter after making the change.
 ![image](situation3.png)
-For this one, though it contains "'add" in its path, its query doesn't start with "s". Thus it fits the third if and prints 404 not found.
+For this one, the query on the browser is changed to "=hello". Though it contains "'add" in its path and so fits the first if in else, its query doesn't start with "s" and so doesn't fit the if inside the if. Thus it keeps going and finally returns "404 not found". We can see the words in the browser change after pressing enter after making the change.
 
 ***
 ## Set Up
